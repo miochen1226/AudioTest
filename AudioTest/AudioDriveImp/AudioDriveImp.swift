@@ -20,7 +20,7 @@ class FrameObj:NSObject
 
 protocol FrameProvider
 {
-    func getNextFrame()->FrameObj
+    func getNextFrame(_ byteSize:UInt32)->FrameObj
 }
 
 protocol AudioDriveImp

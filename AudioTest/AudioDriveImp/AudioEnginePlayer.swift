@@ -30,10 +30,8 @@ class AudioEnginePlayer:NSObject,AudioDriveImp
         streamFormat.mFormatFlags = kLinearPCMFormatFlagIsFloat
         streamFormat.mBitsPerChannel = 32
         streamFormat.mChannelsPerFrame = 1
-        streamFormat.mBytesPerPacket = 4 * streamFormat.mChannelsPerFrame;
-        streamFormat.mBytesPerFrame = 4 * streamFormat.mChannelsPerFrame;
-        
-        //PCM 固定1
+        streamFormat.mBytesPerPacket = 4 * streamFormat.mChannelsPerFrame
+        streamFormat.mBytesPerFrame = 4 * streamFormat.mChannelsPerFrame
         streamFormat.mFramesPerPacket = 1
         streamFormat.mReserved = 0
         
@@ -81,7 +79,7 @@ class AudioEnginePlayer:NSObject,AudioDriveImp
     {
         let outputFormat = AVAudioFormat(commonFormat: .pcmFormatFloat32, sampleRate: Double(44100), channels: 1, interleaved: false)
         
-        let frameObj = self.m_frameProvider?.getNextFrame()
+        let frameObj = self.m_frameProvider?.getNextFrame(2048)
         
         let byteCount = Int(frameObj!.byteCount)
         

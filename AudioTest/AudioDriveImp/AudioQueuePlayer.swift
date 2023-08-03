@@ -33,8 +33,6 @@ class AudioQueuePlayer:NSObject,AudioDriveImp
         streamFormat.mChannelsPerFrame = 1
         streamFormat.mBytesPerPacket = 4 * streamFormat.mChannelsPerFrame;
         streamFormat.mBytesPerFrame = 4 * streamFormat.mChannelsPerFrame;
-        
-        //PCM 固定1
         streamFormat.mFramesPerPacket = 1
         streamFormat.mReserved = 0
         
@@ -65,7 +63,7 @@ class AudioQueuePlayer:NSObject,AudioDriveImp
             return
         }
         
-        let bufferObj = self.m_frameProvider!.getNextFrame()
+        let bufferObj = self.m_frameProvider!.getNextFrame(2048)
         if(bufferObj.byteCount == 0)
         {
             return
